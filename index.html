@@ -10,9 +10,25 @@
 <h1>Welcome to Sender Server</h1>
 
 <form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="text" name="name" id="name">
     <input type="file" name="file" />
     <input type="submit" value="Send">
 </form>
+
+<table>
+    <thead><td>file id</td> <td>file name</td> <td>file size</td> <td>delete file</td> <td>download</td></thead>
+
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>faozia</td>
+            <td>100mb</td>
+            <td><a href="/delete/1">delete</a></td>
+            <td><a href="/download/1">download</a></td>
+        </tr>
+    </tbody>
+
+</table>
 
 </body>
 </html>
