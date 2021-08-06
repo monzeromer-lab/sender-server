@@ -37,6 +37,6 @@ newFile.post('/upload', upload.single('file') ,  (req , res ,next)=>{
             </body>
             </html>
             `); 
-    })
+    });
     
 });

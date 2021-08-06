@@ -21,7 +21,7 @@ deleteFile.get('/delete/:id' ,  (req , res ,next)=>{
                     File Deleted!
                     </body>
                     </html>`)
-        })
+        });
              });
             
     });

@@ -2,7 +2,7 @@
   "name": "sender",
   "version": "2.0.0",
   "description": "just a server allows me to send files from my phone to my laptop because i have nothing to do",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "node index"
   },
