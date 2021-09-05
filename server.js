@@ -2,28 +2,38 @@ const express = require('express'),
     server = express(),
     PORT = 2022;
 
-/* add routers */
+/* 
+    add routers
+*/
 server.use('/', require('./src/routers/newFile'));
 server.use('/', require('./src/routers/download'));
 server.use('/', require('./src/routers/deleteFile'));
 
-/* serve static files */
+/* 
+    serve static files
+*/
 server.use('/static', express.static('./uploaded'));
 
-/* main page renderer */
+/* 
+    redirect the user if the request url is /
+    to /home
+*/
 server.get('/', (req, res) => {
-    res.status(200).sendFile(__dirname + '/index.html');
+    res.redirect('/home');
 });
 
-/* other routers */
+/* 
+    other routers
+*/
 server.use('*', (req, res) => {
     res.status(404).json({
         Error: 'Not Found!'
     });
 });
 
-
-/* error handeler */
+/* 
+    error handeler
+*/
 server.use((err, req, res, next) => {
     res.status(500).json({
         error: true,
@@ -32,5 +42,7 @@ server.use((err, req, res, next) => {
     });
 })
 
-/* port listining */
+/* 
+    port listining
+*/
 server.listen(PORT);
