@@ -4,7 +4,7 @@ const database = require('../modules/database');
 module.exports.downloadHelper = (req, res, next) => {
 
     //database query
-    database.query(`SELECT * FROM sender WHERE id = ${database.escape(req.params.id)}`, (err, result) => {
+    database.query(`SELECT * FROM files WHERE id = ${database.escape(req.params.id)}`, (err, result) => {
 
         //handel error if there's & send response if there's no error
         err ? next(err) : res.status(200).download(result.path, result.name, (err) => {

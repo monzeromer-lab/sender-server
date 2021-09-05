@@ -1,7 +1,7 @@
 const database = require('../modules/database'),
 
     //this module will create file table
-    tableMaker = require('../modules/createFileList')
+    tableMaker = require('../modules/createFileList');
 
 module.exports.homeHelper = (req, res, next) => {
 

@@ -9,4 +9,4 @@ DELETE /delete/:id
 */
 deleteFileEndPoint.delete('/delete/:id', requestHandeler);
 
-module.exports = deleteFile;
+module.exports = deleteFileEndPoint;

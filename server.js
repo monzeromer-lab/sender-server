@@ -8,6 +8,7 @@ const express = require('express'),
 server.use('/', require('./src/routers/newFile'));
 server.use('/', require('./src/routers/download'));
 server.use('/', require('./src/routers/deleteFile'));
+server.use('/' , require('./src/routers/home'));
 
 /* 
     serve static files

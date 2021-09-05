@@ -6,7 +6,7 @@ const express = require('express'),
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, '../../uploaded');
+        cb(null, './uploaded');
     },
     filename: (req, file, cb) => {
         console.log(file);
@@ -25,3 +25,5 @@ newFile.use(express.urlencoded({
 }));
 
 newFile.post('/upload', upload.single('file'), requestHandeler);
+
+module.exports = newFile;
