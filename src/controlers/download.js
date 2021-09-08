@@ -6,12 +6,15 @@ module.exports.downloadHelper = (req, res, next) => {
     //database query
     database.query(`SELECT * FROM files WHERE id = ${database.escape(req.params.id)}`, (err, result) => {
 
-        //handel error if there's & send response if there's no error
-        err ? next(err) : res.status(200).download(result.path, result.name, (err) => {
+        //stringify the result of the query because it unreadable for javascript
+        result = JSON.stringify(result);
 
-            //the "next" method will will send the error to the error handeler in server.js 27,13
-            next(err);
-        });
+        //parse the json previse data to javascript object
+        result = JSON.parse(result);
+
+        //handel error if there's & send response if there's no error
+        err ? next(err) : res.status(200).download('./' + result[0].path, result[0].name);
+        
     });
 
 }

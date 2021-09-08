@@ -16,7 +16,7 @@ server.use('/' , require('./src/routers/home'));
 server.use('/static', express.static('./uploaded'));
 
 /* 
-    redirect the user if the request url is /
+    redirect the user if the request url is empty
     to /home
 */
 server.get('/', (req, res) => {
