@@ -1,5 +1,6 @@
 const express = require('express'),
     server = express(),
+    rateLimit = require("express-rate-limit"),
     PORT = 2022;
 
 /* 
@@ -9,6 +10,24 @@ server.use('/', require('./src/routers/newFile'));
 server.use('/', require('./src/routers/download'));
 server.use('/', require('./src/routers/deleteFile'));
 server.use('/' , require('./src/routers/home'));
+
+/*
+    disable x-powerd-by
+*/
+server.disable("x-powered-by");
+
+/*
+configure rate limit
+*/
+const rateLimiter = rateLimit({
+    windowMs: 25 * 60 * 1000,
+    max: 20
+});
+
+/*
+enable rate limit
+*/
+server.use(rateLimiter);
 
 /* 
     serve static files

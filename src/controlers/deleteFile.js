@@ -4,13 +4,16 @@ const database = require('../modules/database'),
 module.exports.deleteFileHelper = (req, res, next) => {
 
     //get all the file data from the database and delete it
-    database.query(`SELECT * FROM sender WHERE id = ${database.escape(req.params.id)}`, (err, result) => {
+    database.query(`SELECT * FROM sender WHERE id = ${database.escape(req.params.id)}`, (databaseError, result) => {
+
+        //if there's a database error send it to the error handeler otherwise continue
+        databaseError ? next(databaseError) :
 
         //delete the file then delete the database recorde related to it
-        fileSystem.unlink(result.path, (err) => {
+        fileSystem.unlink(result.path, (fileSystemError) => {
 
             //handel any error or delete the database recorde
-            err ? next(err) : res.status(200).send(`
+            fileSystemError ? next(fileSystemError) : res.status(200).send(`
             <!DOCTYPE html>
             <html lang="en">
                 <head>
