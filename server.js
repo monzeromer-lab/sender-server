@@ -1,6 +1,37 @@
 const express = require('express'),
     server = express(),
+    rateLimit = require('express-rate-limit'),
+    methodOverride = require('method-override'),
     PORT = 2022;
+
+/*
+    enable method override
+*/
+server.use(methodOverride('_method'));
+
+/*
+    disable x-powerd-by
+*/
+server.disable("x-powered-by");
+
+/*
+    configure rate limit
+*/
+const rateLimiter = rateLimit({
+    windowMs: 25 * 60 * 1000,
+    max: 20
+});
+
+/*
+    enable rate limit
+*/
+server.use(rateLimiter);
+
+/*
+    enable bodyParser
+*/
+server.use(express.json());
+server.use(express.urlencoded({extended: true}));
 
 /* 
     add routers

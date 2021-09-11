@@ -7,6 +7,6 @@ DELETE /delete/:id
 
  param "id" is the file id need to delete
 */
-deleteFileEndPoint.delete('/delete/:id', requestHandeler);
+deleteFileEndPoint.get('/delete/:id', requestHandeler);
 
 module.exports = deleteFileEndPoint;
