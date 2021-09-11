@@ -1,7 +1,37 @@
 const express = require('express'),
     server = express(),
-    rateLimit = require("express-rate-limit"),
+    rateLimit = require('express-rate-limit'),
+    methodOverride = require('method-override'),
     PORT = 2022;
+
+/*
+    enable method override
+*/
+server.use(methodOverride('_method'));
+
+/*
+    disable x-powerd-by
+*/
+server.disable("x-powered-by");
+
+/*
+    configure rate limit
+*/
+const rateLimiter = rateLimit({
+    windowMs: 25 * 60 * 1000,
+    max: 20
+});
+
+/*
+    enable rate limit
+*/
+server.use(rateLimiter);
+
+/*
+    enable bodyParser
+*/
+server.use(express.json());
+server.use(express.urlencoded({extended: true}));
 
 /* 
     add routers
@@ -10,24 +40,6 @@ server.use('/', require('./src/routers/newFile'));
 server.use('/', require('./src/routers/download'));
 server.use('/', require('./src/routers/deleteFile'));
 server.use('/' , require('./src/routers/home'));
-
-/*
-    disable x-powerd-by
-*/
-server.disable("x-powered-by");
-
-/*
-configure rate limit
-*/
-const rateLimiter = rateLimit({
-    windowMs: 25 * 60 * 1000,
-    max: 20
-});
-
-/*
-enable rate limit
-*/
-server.use(rateLimiter);
 
 /* 
     serve static files
@@ -45,11 +57,11 @@ server.get('/', (req, res) => {
 /* 
     other routers
 */
-server.use('*', (req, res) => {
-    res.status(404).json({
-        Error: 'Not Found!'
-    });
-});
+// server.use('*', (req, res) => {
+//     res.status(404).json({
+//         Error: 'Not Found!'
+//     });
+// });
 
 /* 
     error handeler
