@@ -57,11 +57,11 @@ server.get('/', (req, res) => {
 /* 
     other routers
 */
-// server.use('*', (req, res) => {
-//     res.status(404).json({
-//         Error: 'Not Found!'
-//     });
-// });
+server.use('*', (req, res) => {
+    res.status(404).json({
+        Error: 'Not Found!'
+    });
+});
 
 /* 
     error handeler
