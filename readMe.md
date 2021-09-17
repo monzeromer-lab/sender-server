@@ -27,20 +27,15 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/monzersmiledev/sender-server">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
 
   <h3 align="center">sender-server</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    A Free And Open Source Project Allows You To Store And Shere Files In Your LAN
     <br />
     <a href="https://github.com/monzersmiledev/sender-server"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/monzersmiledev/sender-server">View Demo</a>
-    ·
     <a href="https://github.com/monzersmiledev/sender-server/issues">Report Bug</a>
     ·
     <a href="https://github.com/monzersmiledev/sender-server/issues">Request Feature</a>
@@ -95,22 +90,21 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 
 ### Built With
 
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
-* [Laravel](https://laravel.com)
+* [Nodejs](https://nodejs.org/en/)
+* [MySQL](https://www.mysql.com/)
+
 
 
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+Before We Get Started Make Sure You Have Nodejs And MySQL Database installed in your device!
+link of both is in <a href="#built-with">Built With</a>
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+Update NPM To The Latest Version
 * npm
   ```sh
   npm install npm@latest -g
@@ -118,18 +112,24 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
    git clone https://github.com/monzersmiledev_/sender-server.git
    ```
-3. Install NPM packages
+2. Install NPM packages
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
+3. Enter your Database Configurations in `config.js`
    ```JS
-   const API_KEY = 'ENTER YOUR API';
+   {
+     Database: {
+        host     : 'localhost',
+        user     : 'me',
+        password : 'secret',
+        database : 'my_db'
+      }
+   }
    ```
 
 
