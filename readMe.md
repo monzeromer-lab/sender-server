@@ -21,6 +21,7 @@
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=monzersmiledev_sender-server&metric=alert_status)](https://sonarcloud.io/dashboard?id=monzersmiledev_sender-server)
 
 
 
@@ -28,7 +29,7 @@
 <br />
 <p align="center">
 
-  <h3 align="center">sender-server</h3>
+  <h3 align="center">Sender Server</h3>
 
   <p align="center">
     A Free And Open Source Project Allows You To Store And Shere Files In Your LAN
@@ -114,7 +115,7 @@ Update NPM To The Latest Version
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/monzersmiledev_/sender-server.git
+   git clone https://github.com/monzersmiledev/sender-server.git
    ```
 2. Install NPM packages
    ```sh
@@ -123,7 +124,7 @@ Update NPM To The Latest Version
 3. Enter your Database Configurations in `config.js`
    ```JS
    {
-     Database: {
+     dbConfig: {
         host     : 'localhost',
         user     : 'me',
         password : 'secret',
