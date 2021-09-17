@@ -18,7 +18,7 @@ server.disable("x-powered-by");
     configure rate limit
 */
 const rateLimiter = rateLimit({
-    windowMs: 25 * 60 * 1000,
+    windowMs: 60 * 1000,
     max: 20
 });
 
@@ -31,7 +31,9 @@ server.use(rateLimiter);
     enable bodyParser
 */
 server.use(express.json());
-server.use(express.urlencoded({extended: true}));
+server.use(express.urlencoded({
+    extended: true
+}));
 
 /* 
     add routers
@@ -39,7 +41,7 @@ server.use(express.urlencoded({extended: true}));
 server.use('/', require('./src/routers/newFile'));
 server.use('/', require('./src/routers/download'));
 server.use('/', require('./src/routers/deleteFile'));
-server.use('/' , require('./src/routers/home'));
+server.use('/', require('./src/routers/home'));
 
 /* 
     serve static files
@@ -59,7 +61,9 @@ server.get('/', (req, res) => {
 */
 server.use('*', (req, res) => {
     res.status(404).json({
-        Error: 'Not Found!'
+        error: true,
+        message: 'Not Found!',
+        data: []
     });
 });
 
