@@ -1,4 +1,4 @@
-const db = require('../modules/database');
+const db = require('../database/database');
 
 module.exports.newFileHelper =  (req, res, next) => {
 

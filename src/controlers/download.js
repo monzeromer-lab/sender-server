@@ -1,5 +1,5 @@
 //database module
-const database = require('../modules/database');
+const database = require('../database/database');
 
 module.exports.downloadHelper = (req, res, next) => {
 

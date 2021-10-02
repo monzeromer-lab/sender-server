@@ -33,7 +33,7 @@ app.use('/Public', express.static('./Public'));
     to /home
 */
 app.get('/', (req, res) => {
-    res.render("home");
+    res.status(200).render("home");
 });
 
 /* 

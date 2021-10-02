@@ -1,4 +1,4 @@
-const database = require('../modules/database'),
+const database = require('../database/database'),
     fileSystem = require('fs');
 
 module.exports.deleteFileHelper = (req, res, next) => {

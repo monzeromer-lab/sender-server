@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="150" height="150" viewBox="0 0 150 150">
+  <defs>
+    <clipPath id="clip-Sharikny">
+      <rect width="150" height="150"/>
+    </clipPath>
+  </defs>
+  <g id="Sharikny" clip-path="url(#clip-Sharikny)">
+    <rect id="Rectangle_5" data-name="Rectangle 5" width="150" height="150" rx="20" fill="#342f2f"/>
+    <circle id="Ellipse_1" data-name="Ellipse 1" cx="10" cy="10" r="10" transform="translate(13 110)" fill="#ececec"/>
+    <circle id="Ellipse_2" data-name="Ellipse 2" cx="10" cy="10" r="10" transform="translate(66 21)" fill="#ececec"/>
+    <circle id="Ellipse_3" data-name="Ellipse 3" cx="10" cy="10" r="10" transform="translate(118 110)" fill="#ececec"/>
+    <rect id="Rectangle_2" data-name="Rectangle 2" width="10" height="76" rx="5" transform="translate(35.249 110.344) rotate(-148)" fill="#ececec"/>
+    <rect id="Rectangle_3" data-name="Rectangle 3" width="10" height="76" rx="5" transform="matrix(0.848, -0.53, 0.53, 0.848, 75.768, 45.892)" fill="#ececec"/>
+    <rect id="Rectangle_4" data-name="Rectangle 4" width="10" height="76" rx="5" transform="translate(38.145 125.468) rotate(-90)" fill="#ececec"/>
+  </g>
+</svg>

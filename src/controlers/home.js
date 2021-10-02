@@ -1,4 +1,4 @@
-const database = require('../modules/database'),
+const database = require('../database/database'),
 
     //this module will create file table
     tableMaker = require('../modules/createFileList');
