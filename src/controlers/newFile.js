@@ -16,8 +16,10 @@ module.exports.newFileHelper =  (req, res, next) => {
                 <h1>Welcome again to Sender Server</h1>
         
                 Your File ${req.file.originalname} Is Now Available at ${req.file.path}
+                <a href="/"> Back To Home </a>
             </body>
         </html>
         `);
+        // res.status(200).render("uplouded" , {fileName: req.file.originalname , filePath: req.file.path});
     });
 };

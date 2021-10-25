@@ -34,6 +34,7 @@ module.exports.deleteFileHelper = (req, res, next) => {
                 </body>
             </html>
             `) :
+            // res.status(404).render("notDeleted");
 
             //delete the file then delete the database recorde related to it
             fileSystem.unlink(`./${result[0].path}`, (fileSystemError) => {
@@ -63,6 +64,7 @@ module.exports.deleteFileHelper = (req, res, next) => {
                             </body>
                         </html>
                         `);
+                        // res.status(200).render("deleted");
                     });
             });
     });
