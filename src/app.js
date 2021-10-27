@@ -10,9 +10,9 @@ app.use(express.urlencoded({
 }));
 
 /*
- template engein
+    template engein
 */
-app.set('views' , './src/views')
+app.set('views', './src/views');
 app.set("view engine", "ejs");
 
 /* 
@@ -26,7 +26,7 @@ app.use('/', require('./routers/home'));
 /* 
     serve static files
 */
-app.use('/Public', express.static('./Public'));
+app.use('/public', express.static('./Public'));
 
 /* 
     redirect the user if the request url is empty

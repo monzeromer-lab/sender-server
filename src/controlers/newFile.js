@@ -1,25 +1,32 @@
 const db = require('../database/database');
+const queries = require("../database/queries")
 
-module.exports.newFileHelper =  (req, res, next) => {
+module.exports.newFileHelper = (req, res, next) => {
+    // get name field from body
+    let {
+        name
+    } = req.body;
 
-    db.query(`INSERT INTO files (name , size , path) VALUES ( ${db.escape(req.body.name)} , ${db.escape(req.file.size)} , ${db.escape(req.file.path)})`, (err, result) => {
-        err ? next(err) : res.status(200).send(`
-        <!DOCTYPE html>
-        <html lang="en">
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Sender Server</title>
-            </head>
-            <body>
-        
-                <h1>Welcome again to Sender Server</h1>
-        
-                Your File ${req.file.originalname} Is Now Available at ${req.file.path}
-                <a href="/"> Back To Home </a>
-            </body>
-        </html>
-        `);
-        // res.status(200).render("uplouded" , {fileName: req.file.originalname , filePath: req.file.path});
+    // get file data to save it
+    let {
+        path,
+        size,
+        originalname
+    } = req.file
+
+    // save the file data
+    queries.createNewFile(name, path, size).then((result) => {
+
+        // response with 200 if successed
+        res.status(200).render("uplouded", {
+            fileName: originalname,
+            filePath: path
+        });
+
+    }).catch((err) => {
+
+        // response with 500 if database error
+        next(err);
     });
+
 };

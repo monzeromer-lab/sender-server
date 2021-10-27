@@ -1,5 +1,4 @@
-const express = require('express'),
-    homeRouter = express(),
+const homeRouter = require('express').Router(),
     requestHandeler = require('../controlers/home').homeHelper;
 
 /*
@@ -7,7 +6,6 @@ const express = require('express'),
 
     will list all the files in a table and allow the user to upload new file
 */
-
 homeRouter.get('/home', requestHandeler);
 
 module.exports = homeRouter;

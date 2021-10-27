@@ -1,20 +1,22 @@
 //database module
-const database = require('../database/database');
+const queries = require('../database/queries');
 
 module.exports.downloadHelper = (req, res, next) => {
 
-    //database query
-    database.query(`SELECT * FROM files WHERE id = ${database.escape(req.params.id)}`, (err, result) => {
+    // get the file id from url params
+    let {
+        id
+    } = req.params
 
-        //stringify the result of the query because it unreadable for javascript
-        result = JSON.stringify(result);
+    // get file recorde
+    queries.getOneFile(id).then((result) => {
 
-        //parse the json previse data to javascript object
-        result = JSON.parse(result);
+        //response with 200 and send the file
+        res.status(200).download('./' + result.path, result.name);
+    }).catch((err) => {
 
-        //handel error if there's & send response if there's no error
-        err ? next(err) : res.status(200).download('./' + result[0].path, result[0].name);
-        
-    });
+        // response with 500 if database error
+        next(err);
+    })
 
 }

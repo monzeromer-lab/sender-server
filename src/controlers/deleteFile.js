@@ -1,71 +1,46 @@
-const database = require('../database/database'),
-    fileSystem = require('fs');
+const fileSystem = require('fs'),
+    queries = require("../database/queries");
 
 module.exports.deleteFileHelper = (req, res, next) => {
 
-    //get all the file data from the database and delete it
-    database.query(`SELECT * FROM files WHERE id = ${database.escape(req.params.id)}`, (databaseError, result) => {
+    // get the id from url params
+    let {
+        id
+    } = req.params
 
-        //stringify the result of the query because it unreadable for javascript
-        result = JSON.stringify(result);
+    // get one file with it's id
+    queries.getOneFile(id).then((databaseResult) => {
 
-        //parse the json previse data to javascript object
-        result = JSON.parse(result);
+        // if the result is null response with 404
+        if (databaseResult == null) {
+            res.status(404).render("notDeleted")
 
-        //if there's a database error send it to the error handeler otherwise continue
-        databaseError ? next(databaseError) :
-
-            //if the result is empty response with this file isn't available
-            result.length < 1 ? res.status(404).send(`
-            <!DOCTYPE html>
-            <html lang="en">
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>
-                        Sender Server
-                    </title>
-                </head>
-                <body>
-                    <h1>
-                        Welcome again to Sender Server
-                    </h1>
-                    This file isn't available
-                </body>
-            </html>
-            `) :
-            // res.status(404).render("notDeleted");
-
-            //delete the file then delete the database recorde related to it
+            // else delete the file
+        } else {
             fileSystem.unlink(`./${result[0].path}`, (fileSystemError) => {
-                
-                //handel any error or delete the database recorde
-                fileSystemError ? next(fileSystemError) :
 
-                    //delete the recorde
-                    database.query(`DELETE FROM files WHERE id = ${database.escape(req.params.id)}`, (databaseDeleteQueryError, _result) => {
-                        
-                        //send the response
-                        databaseDeleteQueryError ? next(databaseDeleteQueryError) : res.status(200).send(`
-                        <!DOCTYPE html>
-                        <html lang="en">
-                            <head>
-                                <meta charset="UTF-8">
-                                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                                <title>
-                                    Sender Server
-                                </title>
-                            </head>
-                            <body>
-                                <h1>
-                                    Welcome again to Sender Server
-                                </h1>
-                                File Deleted!
-                            </body>
-                        </html>
-                        `);
-                        // res.status(200).render("deleted");
-                    });
+                // response with 500 if file system error
+                if (fileSystemError) {
+                    next(fileSystemError);
+
+                    // else delete the file record
+                } else {
+                    queries.deleteOneFile(id).then((result) => {
+
+                        // note: the result is the number of the deleted rows
+                        // response with 200 if deleted
+                        res.status(200).render("deleted");
+                    }).catch((err) => {
+
+                        //response with 500 if database error
+                        next(err);
+                    })
+                }
             });
+        }
+    }).catch((databaseError) => {
+
+        // response with 500 if databse error
+        next(databaseError)
     });
 };

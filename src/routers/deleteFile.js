@@ -1,5 +1,4 @@
-const express = require('express'),
-    deleteFileEndPoint = express(),
+const deleteFileEndPoint = require('express').Router(),
     requestHandeler = require('../controlers/deleteFile').deleteFileHelper;
 /*
 
