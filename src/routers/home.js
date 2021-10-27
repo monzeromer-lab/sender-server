@@ -1,5 +1,5 @@
 const homeRouter = require('express').Router(),
-    requestHandeler = require('../controlers/home').homeHelper;
+    requestHandeler = require('../controllers/home').homeHelper;
 
 /*
     GET /home

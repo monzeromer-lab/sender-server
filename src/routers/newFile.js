@@ -2,7 +2,7 @@ const express = require('express'),
     newFile = express.Router(),
     multer = require('multer'),
     path = require('path'),
-    requestHandeler = require('../controlers/newFile').newFileHelper;
+    requestHandeler = require('../controllers/newFile').newFileHelper;
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {

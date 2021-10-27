@@ -1,5 +1,5 @@
 const deleteFileEndPoint = require('express').Router(),
-    requestHandeler = require('../controlers/deleteFile').deleteFileHelper;
+    requestHandeler = require('../controllers/deleteFile').deleteFileHelper;
 /*
 
 DELETE /delete/:id
