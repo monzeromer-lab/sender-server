@@ -1,5 +1,6 @@
 const express = require('express'),
     app = express();
+// express.request.cookies("token", true)
 
 /*
     enable bodyParser
@@ -22,6 +23,7 @@ app.use('/', require('./routers/newFile'));
 app.use('/', require('./routers/download'));
 app.use('/', require('./routers/deleteFile'));
 app.use('/', require('./routers/home'));
+app.use('/', require("./routers/users"));
 
 /* 
     serve static files

@@ -1,11 +1,16 @@
-const testDatabaseConfig = require("../../config/testDatabase");
+// database for testing
+const DatabaseConfig = require("../../config/testDatabase");
+
+// production database
+// const DatabaseConfig = require("../../config/database");
+
 const {
    Sequelize
 } = require("sequelize");
 
-const sequelize = new Sequelize(testDatabaseConfig.database, testDatabaseConfig.user, testDatabaseConfig.password, {
-   host: testDatabaseConfig.host,
-   dialect: testDatabaseConfig.type,
+const sequelize = new Sequelize(DatabaseConfig.database, DatabaseConfig.user, DatabaseConfig.password, {
+   host: DatabaseConfig.host,
+   dialect: DatabaseConfig.type,
    logging: false,
    pool: {
       max: 30,

@@ -1,3 +1,4 @@
 module.exports = {
-    filesModel: require("./files")
+    filesModel: require("./files"),
+    usersModel: require("./users")
 }
