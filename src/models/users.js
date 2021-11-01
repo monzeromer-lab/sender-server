@@ -1,7 +1,9 @@
-const sequelize = require("../database/database");
-const {
-    DataTypes
-} = require("sequelize");
+const sequelize = require("../database/database"),
+    {
+        DataTypes
+    } = require("sequelize"),
+    files = require("./files"),
+    posts = require("./posts");
 
 const users = sequelize.define("users", {
     id: {
@@ -58,8 +60,13 @@ const users = sequelize.define("users", {
     freezeTableName: true
 });
 
+// unable drop table if exists before creating the table 
 users.sync({
     force: false
 });
+
+// setup the releationship between the users and the posts & files
+users.hasMany(posts);
+users.hasMany(files);
 
 module.exports = users;
