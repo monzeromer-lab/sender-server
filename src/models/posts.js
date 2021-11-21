@@ -21,7 +21,8 @@ const posts = sequelize.define("posts", {
         references: {
             model: "files",
             key: "id"
-        }
+        },
+        allowNull: true
     },
     body: {
         type: DataTypes.CHAR,

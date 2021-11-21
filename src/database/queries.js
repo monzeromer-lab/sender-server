@@ -23,9 +23,10 @@ module.exports = {
                 size: size
             }).then((result) => {
                 resolve(result);
+
             }).catch((err) => {
                 reject(err);
-            })
+            });
         });
 
     },
@@ -42,9 +43,10 @@ module.exports = {
             // get all the files
             models.filesModel.findAll().then((result) => {
                 resolve(result);
+
             }).catch((err) => {
                 reject(err);
-            })
+            });
         });
     },
 
@@ -64,6 +66,7 @@ module.exports = {
             // get one file with primary key
             models.filesModel.findByPk(id).then((result) => {
                 resolve(result);
+
             }).catch((err) => {
                 reject(err);
             });
@@ -90,9 +93,10 @@ module.exports = {
                 }
             }).then((result) => {
                 resolve(result);
+
             }).catch((err) => {
                 reject(err);
-            })
+            });
         });
     },
 
@@ -122,6 +126,7 @@ module.exports = {
                 password: password
             }).then((result) => {
                 resolve(result);
+
             }).catch((err) => {
                 reject(err);
             });
@@ -142,9 +147,10 @@ module.exports = {
             // get all the users records
             models.usersModel.findAll().then((result) => {
                 resolve(result);
+
             }).catch((err) => {
                 reject(err);
-            })
+            });
         });
     },
 
@@ -179,9 +185,10 @@ module.exports = {
                 }
             }).then((result) => {
                 resolve(result);
+
             }).catch((err) => {
                 reject(err);
-            })
+            });
 
         });
     },
@@ -202,10 +209,92 @@ module.exports = {
                 }
             }).then((result) => {
                 resolve(result);
+
             }).catch((err) => {
                 reject(err);
-            })
+            });
         });
+    },
+
+    /**
+     * @author Monzer Omer
+     * @description Follow a user
+     * @param {string} userId the user to follow id
+     * @param {string} followerId the user who cliked the follow button id
+     * 
+     * @returns {promise} promise the result of the database
+     */
+    followUser: (userId, followerId) => {
+
+        return new Promise((resolve, reject) => {
+
+            models.userFollowers.create({
+                user_id: userId,
+                follower_id: followerId
+            }).then((result) => {
+                resolve(result);
+
+            }).catch((err) => {
+                reject(err);
+
+            });
+        });
+    },
+
+    /**
+     * @author Monzer Omer
+     * @description Follow a new post when the user interacted with it or just if the user clicked follow this post
+     * 
+     * @param {string} postId the post that user interacted with
+     * @param {string} userId the user who interacted with the post
+     * 
+     * @returns {promise} promise the result of the database
+     */
+    followPost: (postId, userId) => {
+
+        return new Promise((resolve, reject) => {
+
+            models.postFollowers.create({
+                post_id: postId,
+                user_id: userId
+            }).then((result) => {
+                resolve(result);
+
+            }).catch((err) => {
+                reject(err);
+
+            });
+        });
+
+    },
+
+    /**
+     * @author Monzer Omer
+     * @description create a new post record
+     * 
+     * @param {string} userId the user who created the post id 
+     * @param {string} fileId the file that the user uploaded if there `null is allowed`
+     * @param {string} body the text in the post if there `null is allowed`
+     * 
+     * @returns {promise} promise the result of the database
+     */
+    newPost: (userId, fileId, body) => {
+
+        return new Promise((resolve, reject) => {
+
+            models.posts.create({
+                user_id: userId,
+                file_id: fileId,
+                body: body
+            }).then((result) => {
+                resolve(result);
+
+            }).catch((err)=>{
+                reject(err);
+
+            });
+        });
+
     }
 
 }
