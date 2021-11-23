@@ -1,15 +1,14 @@
 const express = require('express'),
-    newFile = express(),
+    newFile = express.Router(),
     multer = require('multer'),
     path = require('path'),
-    requestHandeler = require('../controlers/newFile').newFileHelper;
+    requestHandeler = require('../controllers/newFile').newFileHelper;
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, './uploaded');
+        cb(null, './Public/uploads');
     },
     filename: (req, file, cb) => {
-        console.log(file);
         cb(null, 'FILE-' + Date.now() + path.extname(file.originalname));
     }
 });

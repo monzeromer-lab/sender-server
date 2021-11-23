@@ -1,6 +1,6 @@
 {
   "name": "sender",
-  "version": "2.0.0",
+  "version": "0.1.2",
   "description": "just a server allows me to send files from my phone to my laptop because i have nothing to do",
   "main": "server.js",
   "scripts": {

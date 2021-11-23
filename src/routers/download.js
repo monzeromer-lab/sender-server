@@ -1,9 +1,7 @@
 //modules
-const express = require('express'),
-    //express app
-    downloadEndPoint = express(),
+const downloadEndPoint = require('express').Router(),
     //helper
-    requestHandeler = require('../controlers/download').downloadHelper;
+    requestHandeler = require('../controllers/download').downloadHelper;
 
 /*
  GET /download/:id 
