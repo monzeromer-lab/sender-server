@@ -17,7 +17,7 @@ const filesRouter = require("express").Router(),
     upload = multer({
         storage: storage,
         limits: {
-            fileSize: 1000000 * 500
+            fileSize: 10000000
         }
     });
 
