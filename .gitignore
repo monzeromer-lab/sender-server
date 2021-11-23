@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 node_modules
 
 # test code file
 test.js
+=======
+# modules
+node_modules
+
+# test.js file
+test.js
+>>>>>>> master

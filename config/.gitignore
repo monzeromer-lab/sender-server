@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 # production database configration
+=======
+# production database
+>>>>>>> master
 database.js
