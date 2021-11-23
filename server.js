@@ -3,11 +3,6 @@ const server = require('./src/app'),
     PORT = 2022;
 
 /*
-    disable x-powerd-by
-*/
-server.disable("x-powered-by");
-
-/*
     configure rate limit
 */
 const rateLimiter = rateLimit({

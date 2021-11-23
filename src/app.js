@@ -10,6 +10,11 @@ app.use(express.urlencoded({
 }));
 
 /*
+    deisable x-powered-by
+*/
+app.disable("x-powered-by");
+
+/*
     template engein
 */
 app.set('views', './src/views');
