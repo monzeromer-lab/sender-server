@@ -23,10 +23,8 @@ app.set("view engine", "ejs");
 /* 
     add routers
 */
-app.use('/', require('./routers/newFile'));
-app.use('/', require('./routers/download'));
-app.use('/', require('./routers/deleteFile'));
-app.use('/', require('./routers/home'));
+app.use("/", require("./routers/users.router"));
+app.use("/", require("./routers/files.router"));
 
 /* 
     serve static files
