@@ -20,6 +20,11 @@ app.disable("x-powered-by");
 app.set('views', './src/views');
 app.set("view engine", "ejs");
 
+/*
+    disable x-powered-by
+*/
+app.disable("x-powered-by");
+
 /* 
     add routers
 */
