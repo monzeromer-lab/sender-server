@@ -44,7 +44,7 @@ app.use('/public', express.static('./Public'));
     to /home
 */
 app.get('/', (req, res) => {
-    res.status(200).render("home");
+    res.status(200).redirect("/home");
 });
 
 /* 
