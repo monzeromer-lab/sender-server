@@ -11,12 +11,14 @@ const users_followers = sequelize.define("users_followers", {
         defaultValue: DataTypes.UUIDV1
     },
     user_id: {
+        type: DataTypes.UUID,
         references: {
             model: "users",
             key: "id"
         }
     },
     follower_id: {
+        type: DataTypes.UUID,
         references: {
             model: "users",
             key: "id"

@@ -4,12 +4,14 @@ const sequelize = require("../database/database"),
 
 const posts_followers = sequelize.define("posts_followers", {
     post_id: {
+        type: DataTypes.UUID,
         references: {
             model: "posts",
             key: "id"
         }
     },
     user_id: {
+        type: DataTypes.UUID,
         references: {
             model: "users",
             key: "id"

@@ -12,12 +12,14 @@ const posts = sequelize.define("posts", {
         defaultValue: DataTypes.UUIDV1
     },
     user_id: {
+        type: DataTypes.UUID,
         references: {
             model: "users",
             key: "id"
         }
     },
     file_id: {
+        type: DataTypes.UUID,
         references: {
             model: "files",
             key: "id"
