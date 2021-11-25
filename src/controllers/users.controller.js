@@ -12,16 +12,28 @@ module.exports = {
     */
     loginRenderer: (req, res, next) => {
 
-        // let {
-        //     token = null
-        // } = req.cookies;
+        let {
+            token = null
+        } = req.cookies;
 
-        // if (token)
-        //     res.status(200).render('home');
-        // else
+        if (token)
+            res.status(200).redirect("/home");
+        else
             res.status(200).render('login');
     },
-    registerRenderer: (req, res, next)=> {
+
+    /*
+        controller for render register page or the home page
+    */
+    registerRenderer: (req, res, next) => {
+        
+        let {
+            token = null
+        } = req.cookies;
+
+        if (token)
+            res.status(200).redirect("/home");
+        else
         res.status(200).render('register');
     },
 

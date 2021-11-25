@@ -1,5 +1,6 @@
 const express = require('express'),
-    app = express();
+    app = express(),
+    cookieParser = require("cookie-parser");
 
 /*
     enable bodyParser
@@ -9,6 +10,11 @@ app.use(express.urlencoded({
     extended: true,
     limit: "2mb"
 }));
+
+/*
+    enable cookie parser
+*/
+app.use(cookieParser());
 
 /*
     deisable x-powered-by
@@ -21,16 +27,12 @@ app.disable("x-powered-by");
 app.set('views', './src/views');
 app.set("view engine", "ejs");
 
-/*
-    disable x-powered-by
-*/
-app.disable("x-powered-by");
-
 /* 
     add routers
 */
 app.use("/", require("./routers/users.router"));
 app.use("/", require("./routers/files.router"));
+app.use("/", require("./routers/home"));
 
 /* 
     serve static files
